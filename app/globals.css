@@ -1,4 +1,4 @@
-/* Basic styling for the app */
+/* Dashboard specific styling */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -6,8 +6,101 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f7fa;
 }
 
 * {
   box-sizing: border-box;
+}
+
+/* Override EUI table styles to match design */
+.euiTable {
+  border: none !important;
+}
+
+.euiTableHeaderCell {
+  background-color: #fafbfc !important;
+  border-bottom: 1px solid #e8eaed !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+  color: #6c757d !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+.euiTableRow {
+  border-bottom: 1px solid #f0f2f5 !important;
+}
+
+.euiTableRow:hover {
+  background-color: #fafbfc !important;
+}
+
+.euiTableRowCell {
+  border: none !important;
+  padding: 12px 16px !important;
+}
+
+/* Custom panel shadows */
+.euiPanel {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+  border: 1px solid #e8eaed !important;
+}
+
+/* Progress bars styling */
+.euiProgress {
+  border-radius: 2px !important;
+}
+
+.euiProgress__data {
+  border-radius: 2px !important;
+}
+
+/* Health indicator styling */
+.euiHealth {
+  align-items: center;
+}
+
+/* Button styling */
+.euiButton--fill {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Form controls */
+.euiFormRow__label {
+  font-weight: 500 !important;
+  font-size: 12px !important;
+  color: #6c757d !important;
+  margin-bottom: 4px !important;
+}
+
+.euiSelect,
+.euiDatePicker {
+  border: 1px solid #d9d9d9 !important;
+  border-radius: 4px !important;
+}
+
+.euiSelect:focus,
+.euiDatePicker:focus {
+  border-color: #1890ff !important;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2) !important;
+}
+
+/* Chart area styling */
+.chart-container {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .euiFlexGroup--responsive {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .euiPage {
+    padding: 16px !important;
+  }
 }

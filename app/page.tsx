@@ -3,126 +3,78 @@
 import {
   EuiPage,
   EuiPageBody,
-  EuiPageHeader,
   EuiPageSection,
-  EuiTitle,
-  EuiText,
-  EuiButton,
-  EuiCard,
-  EuiFlexGroup,
-  EuiFlexItem,
   EuiSpacer,
-  EuiPanel,
-  EuiStat,
-  EuiIcon,
 } from '@elastic/eui';
-import { useState } from 'react';
+
+// Import our custom components
+import { DashboardHeader } from './components/header/DashboardHeader';
+import { KPICards } from './components/kpi/KPICards';
+import { TeamPerformance } from './components/performance/TeamPerformance';
+import { AssetFeedback } from './components/performance/AssetFeedback';
+import { AgentsTable } from './components/agents/AgentsTable';
+import { CallVolumeChart } from './components/charts/CallVolumeChart';
+import { CallStatsPanel } from './components/charts/CallStatsPanel';
+import { css } from '@emotion/css';
 
 export default function Home() {
-  const [clickCount, setClickCount] = useState(0);
-
   return (
-    <EuiPage paddingSize="l">
-      <EuiPageBody>
-        {/* Page Header - EUI Concept 1: Headers and Navigation */}
-        <EuiPageHeader
-          iconType="dashboardApp"
-          pageTitle="My Dashboard"
-          description="Learning Elastic UI concepts with a simple dashboard"
-          rightSideItems={[
-            <EuiButton fill iconType="plusInCircle">
-              Add New Item
-            </EuiButton>
-          ]}
-        />
+    <EuiPage 
+      paddingSize="l" 
+      style={{ 
+        backgroundColor: '#f5f7fa',
+        minHeight: '100vh'
+      }}
+    >
+      <EuiPageBody style={{ maxWidth: '1400px', margin: '0 auto' }}>
+        {/* Dashboard Header with filters */}
+        <DashboardHeader />
 
-        <EuiPageSection>
-          {/* Stats Section - EUI Concept 2: Stats and Metrics */}
-          <EuiTitle size="l">
-            <h2>Overview Stats</h2>
-          </EuiTitle>
-          <EuiSpacer size="m" />
-          
-          <EuiFlexGroup gutterSize="l">
-            <EuiFlexItem>
-              <EuiStat
-                title="1,247"
-                description="Total Users"
-                titleColor="primary"
-              />
-            </EuiFlexItem>
-            <EuiFlexItem>
-              <EuiStat
-                title="89%"
-                description="Success Rate"
-                titleColor="success"
-              />
-            </EuiFlexItem>
-            <EuiFlexItem>
-              <EuiStat
-                title={clickCount.toString()}
-                description="Button Clicks"
-                titleColor="accent"
-              />
-            </EuiFlexItem>
-          </EuiFlexGroup>
+        <EuiPageSection paddingSize="none">
+          {/* Layout matching the exact inspired design */}
+          <div
+            className={css`
+              display: grid;
+              grid-template-columns: 280px 320px 1fr 400px; /* KPIs, Team Performance, Asset Feedback, Stats */
+              grid-template-rows: auto auto;
+              gap: 16px;
+              align-items: start;
+            `}
+          >
+            {/* Top Row 1: KPI Cards - vertical */}
+            <div className={css`grid-column: 1; grid-row: 1;`}>
+              <KPICards />
+            </div>
 
-          <EuiSpacer size="xl" />
+            {/* Top Row 1: Team Performance */}
+            <div className={css`grid-column: 2; grid-row: 1;`}>
+              <TeamPerformance />
+            </div>
 
-          {/* Cards Section - EUI Concept 3: Cards and Layouts */}
-          <EuiTitle size="l">
-            <h2>Dashboard Cards</h2>
-          </EuiTitle>
-          <EuiSpacer size="m" />
+            {/* Top Row 1: Asset Feedback */}
+            <div className={css`grid-column: 3; grid-row: 1;`}>
+              <AssetFeedback />
+            </div>
 
-          <EuiFlexGroup gutterSize="l">
-            <EuiFlexItem>
-              <EuiCard
-                icon={<EuiIcon size="xxl" type="analyzeEvent" />}
-                title="Analytics"
-                description="View detailed analytics and reports for your data"
-                onClick={() => alert('Analytics clicked!')}
-              />
-            </EuiFlexItem>
-            <EuiFlexItem>
-              <EuiCard
-                icon={<EuiIcon size="xxl" type="gear" />}
-                title="Settings"
-                description="Configure your application settings and preferences"
-                onClick={() => alert('Settings clicked!')}
-              />
-            </EuiFlexItem>
-            <EuiFlexItem>
-              <EuiCard
-                icon={<EuiIcon size="xxl" type="help" />}
-                title="Help Center"
-                description="Get help and find documentation for common tasks"
-                onClick={() => alert('Help clicked!')}
-              />
-            </EuiFlexItem>
-          </EuiFlexGroup>
+            {/* Top Row 1: Call Stats Panel */}
+            <div className={css`grid-column: 4; grid-row: 1;`}>
+              <CallStatsPanel />
+            </div>
 
-          <EuiSpacer size="xl" />
-
-          {/* Interactive Section - EUI Concept 4: Interactivity */}
-          <EuiPanel paddingSize="l">
-            <EuiTitle size="m">
-              <h3>Interactive Demo</h3>
-            </EuiTitle>
-            <EuiSpacer size="m" />
-            <EuiText>
-              <p>Click the button below to see state management in action:</p>
-            </EuiText>
-            <EuiSpacer size="m" />
-            <EuiButton
-              fill
-              color="primary"
-              iconType="play"
-              onClick={() => setClickCount(clickCount + 1)}
-            >
-              Click me! ({clickCount})
-            </EuiButton>
-          </EuiPanel>
+            {/* Bottom Row: Chart and Agent Table side by side */}
+            <div className={css`grid-column: 1 / -1; grid-row: 2;`}>
+              <div className={css`
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+                align-items: start;
+                height: 400px;
+              `}>
+                <CallVolumeChart />
+                <AgentsTable />
+              </div>
+            </div>
+          </div>
         </EuiPageSection>
       </EuiPageBody>
     </EuiPage>
