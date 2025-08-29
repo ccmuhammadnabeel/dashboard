@@ -5,6 +5,8 @@ import {
   EuiPageBody,
   EuiPageSection,
   EuiSpacer,
+  EuiFlexGroup,
+  EuiFlexItem,
 } from '@elastic/eui';
 
 // Import our custom components
@@ -15,7 +17,6 @@ import { AssetFeedback } from './components/performance/AssetFeedback';
 import { AgentsTable } from './components/agents/AgentsTable';
 import { CallVolumeChart } from './components/charts/CallVolumeChart';
 import { CallStatsPanel } from './components/charts/CallStatsPanel';
-import { css } from '@emotion/css';
 
 export default function Home() {
   return (
@@ -27,54 +28,42 @@ export default function Home() {
       }}
     >
       <EuiPageBody style={{ maxWidth: '1400px', margin: '0 auto' }}>
-        {/* Dashboard Header with filters */}
         <DashboardHeader />
 
         <EuiPageSection paddingSize="none">
-          {/* Layout matching the exact inspired design */}
-          <div
-            className={css`
-              display: grid;
-              grid-template-columns: 280px 320px 1fr 400px; /* KPIs, Team Performance, Asset Feedback, Stats */
-              grid-template-rows: auto auto;
-              gap: 16px;
-              align-items: start;
-            `}
-          >
-            {/* Top Row 1: KPI Cards - vertical */}
-            <div className={css`grid-column: 1; grid-row: 1;`}>
+          <EuiFlexGroup gutterSize="m" alignItems="flexStart">
+            {/* KPI Cards */}
+            <EuiFlexItem style={{ maxWidth: '280px', minWidth: '280px' }}>
               <KPICards />
-            </div>
+            </EuiFlexItem>
 
-            {/* Top Row 1: Team Performance */}
-            <div className={css`grid-column: 2; grid-row: 1;`}>
+            {/* Team Performance */}
+            <EuiFlexItem style={{ maxWidth: '320px', minWidth: '320px' }}>
               <TeamPerformance />
-            </div>
+            </EuiFlexItem>
 
-            {/* Top Row 1: Asset Feedback */}
-            <div className={css`grid-column: 3; grid-row: 1;`}>
+            {/* Asset Feedback */}
+            <EuiFlexItem grow={true}>
               <AssetFeedback />
-            </div>
+            </EuiFlexItem>
 
-            {/* Top Row 1: Call Stats Panel */}
-            <div className={css`grid-column: 4; grid-row: 1;`}>
+            {/* Call Stats Panel */}
+            <EuiFlexItem style={{ maxWidth: '400px', minWidth: '400px' }}>
               <CallStatsPanel />
-            </div>
+            </EuiFlexItem>
+          </EuiFlexGroup>
 
-            {/* Bottom Row: Chart and Agent Table side by side */}
-            <div className={css`grid-column: 1 / -1; grid-row: 2;`}>
-              <div className={css`
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 16px;
-                align-items: start;
-                height: 400px;
-              `}>
-                <CallVolumeChart />
-                <AgentsTable />
-              </div>
-            </div>
-          </div>
+          <EuiSpacer size="m" />
+
+          {/* Bottom Row: Chart and Agent Table side by side */}
+          <EuiFlexGroup gutterSize="m" alignItems="stretch" style={{ height: '400px' }}>
+            <EuiFlexItem>
+              <CallVolumeChart />
+            </EuiFlexItem>
+            <EuiFlexItem>
+              <AgentsTable />
+            </EuiFlexItem>
+          </EuiFlexGroup>
         </EuiPageSection>
       </EuiPageBody>
     </EuiPage>

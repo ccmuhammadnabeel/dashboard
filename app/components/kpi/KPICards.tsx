@@ -12,13 +12,13 @@ import { kpiData } from '../../data/mockData';
 const cardStyle = css`
   background: #ffffff;
   border-radius: 8px;
-  padding: 16px;
+  padding: 12px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   border: 1px solid #f0f0f0;
   display: flex;
   align-items: center;
   gap: 12px;
-  min-height: 70px;
+  min-height: 60px;
 `;
 
 const iconContainerStyle = (bgColor: string) => css`

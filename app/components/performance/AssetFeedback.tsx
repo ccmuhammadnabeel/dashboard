@@ -20,6 +20,7 @@ const panelStyle = css`
 const tabsContainerStyle = css`
   display: flex;
   margin-bottom: 0;
+  width: 100%;
 `;
 
 const tabStyle = (isActive: boolean) => css`
@@ -31,7 +32,12 @@ const tabStyle = (isActive: boolean) => css`
   cursor: pointer;
   font-weight: 500;
   border-radius: ${isActive ? '8px 8px 0 0' : '8px 8px 0 0'};
-  margin-right: 2px;
+  flex: 1;
+  text-align: center;
+  
+  &:first-child {
+    margin-right: 2px;
+  }
   
   &:hover {
     background-color: ${isActive ? '#ff7a45' : '#e8e8e8'};
