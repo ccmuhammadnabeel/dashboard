@@ -32,7 +32,7 @@ export const DashboardHeader = () => {
   ];
 
   return (
-    <div style={{ marginBottom: '24px' }}>
+    <EuiFlexItem style={{ marginBottom: '24px' }}>
       {/* Dashboard Title */}
       <EuiFlexGroup alignItems="center" gutterSize="s" style={{ marginBottom: '16px' }}>
         <EuiFlexItem grow={false}>
@@ -100,7 +100,7 @@ export const DashboardHeader = () => {
           </EuiButton>
         </EuiFlexItem>
       </EuiFlexGroup>
-    </div>
+    </EuiFlexItem>
   );
 };
 

@@ -1,6 +1,13 @@
 'use client';
 
-import { EuiPanel } from '@elastic/eui';
+import { 
+  EuiPanel, 
+  EuiFlexGroup, 
+  EuiFlexItem, 
+  EuiText,
+  EuiSpacer,
+  EuiLink
+} from '@elastic/eui';
 import { css } from '@emotion/css';
 
 const panelStyle = css`
@@ -13,42 +20,13 @@ const panelStyle = css`
 `;
 
 const statsTableStyle = css`
-  .header {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr;
-    gap: 12px;
-    padding: 8px 0;
-    border-bottom: 1px solid #f0f0f0;
-    font-size: 11px;
-    font-weight: 600;
-    color: #666;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
   .row {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr;
-    gap: 12px;
     padding: 10px 0;
     border-bottom: 1px solid #f5f5f5;
-    font-size: 12px;
 
     &:last-child {
       border-bottom: none;
     }
-
-    .label { font-weight: 500; color: #333; }
-    .value { color: #666; }
-  }
-
-  .footerLink {
-    text-align: right;
-    margin-top: 8px;
-    font-size: 12px;
-    color: #ff7a45;
-    cursor: pointer;
-    font-weight: 500;
   }
 `;
 
@@ -62,28 +40,134 @@ export const CallStatsPanel = () => {
 
   return (
     <EuiPanel className={panelStyle} paddingSize="none">
-      <div className={statsTableStyle}>
-        <div className="header">
-          <span>Call Volume</span>
-          <span>Avg. Call Mins</span>
-          <span>Active Agent</span>
-          <span>Satisfaction Score</span>
-          <span>Call per Agent</span>
-        </div>
+      <EuiFlexGroup direction="column" gutterSize="none" className={statsTableStyle}>
+        {/* Header */}
+        <EuiFlexItem grow={false}>
+          <EuiFlexGroup gutterSize="m" alignItems="center" style={{ padding: '8px 0', borderBottom: '1px solid #f0f0f0' }}>
+            <EuiFlexItem style={{ flex: '1.2' }}>
+              <EuiText 
+                size="xs" 
+                style={{ 
+                  fontWeight: 600, 
+                  color: '#666', 
+                  textTransform: 'uppercase', 
+                  letterSpacing: '0.5px' 
+                }}
+              >
+                Call Volume
+              </EuiText>
+            </EuiFlexItem>
+            <EuiFlexItem>
+              <EuiText 
+                size="xs" 
+                style={{ 
+                  fontWeight: 600, 
+                  color: '#666', 
+                  textTransform: 'uppercase', 
+                  letterSpacing: '0.5px' 
+                }}
+              >
+                Avg. Call Mins
+              </EuiText>
+            </EuiFlexItem>
+            <EuiFlexItem>
+              <EuiText 
+                size="xs" 
+                style={{ 
+                  fontWeight: 600, 
+                  color: '#666', 
+                  textTransform: 'uppercase', 
+                  letterSpacing: '0.5px' 
+                }}
+              >
+                Active Agent
+              </EuiText>
+            </EuiFlexItem>
+            <EuiFlexItem>
+              <EuiText 
+                size="xs" 
+                style={{ 
+                  fontWeight: 600, 
+                  color: '#666', 
+                  textTransform: 'uppercase', 
+                  letterSpacing: '0.5px' 
+                }}
+              >
+                Satisfaction Score
+              </EuiText>
+            </EuiFlexItem>
+            <EuiFlexItem>
+              <EuiText 
+                size="xs" 
+                style={{ 
+                  fontWeight: 600, 
+                  color: '#666', 
+                  textTransform: 'uppercase', 
+                  letterSpacing: '0.5px' 
+                }}
+              >
+                Call per Agent
+              </EuiText>
+            </EuiFlexItem>
+          </EuiFlexGroup>
+        </EuiFlexItem>
 
+        {/* Data Rows */}
         {statsData.map((stat, index) => (
-          <div key={index} className="row">
-            <span className="label">{stat.label}</span>
-            <span className="value">{stat.volume}</span>
-            <span className="value">{stat.avgMins}</span>
-            <span className="value">{stat.agents}</span>
-            <span className="value">{stat.satisfaction}</span>
-            <span className="value">{stat.perAgent}</span>
-          </div>
+          <EuiFlexItem key={index} grow={false} className="row">
+            <EuiFlexGroup gutterSize="m" alignItems="center">
+              <EuiFlexItem style={{ flex: '1.2' }}>
+                <EuiText size="s" style={{ fontWeight: 500, color: '#333' }}>
+                  {stat.label}
+                </EuiText>
+              </EuiFlexItem>
+              <EuiFlexItem>
+                <EuiText size="s" style={{ color: '#666' }}>
+                  {stat.volume}
+                </EuiText>
+              </EuiFlexItem>
+              <EuiFlexItem>
+                <EuiText size="s" style={{ color: '#666' }}>
+                  {stat.avgMins}
+                </EuiText>
+              </EuiFlexItem>
+              <EuiFlexItem>
+                <EuiText size="s" style={{ color: '#666' }}>
+                  {stat.agents}
+                </EuiText>
+              </EuiFlexItem>
+              <EuiFlexItem>
+                <EuiText size="s" style={{ color: '#666' }}>
+                  {stat.satisfaction}
+                </EuiText>
+              </EuiFlexItem>
+              <EuiFlexItem>
+                <EuiText size="s" style={{ color: '#666' }}>
+                  {stat.perAgent}
+                </EuiText>
+              </EuiFlexItem>
+            </EuiFlexGroup>
+          </EuiFlexItem>
         ))}
 
-        <div className="footerLink">More Details</div>
-      </div>
+        {/* Footer Link */}
+        <EuiFlexItem grow={false}>
+          <EuiFlexGroup justifyContent="flexEnd">
+            <EuiFlexItem grow={false}>
+              <EuiLink 
+                style={{ 
+                  marginTop: '8px', 
+                  fontSize: '12px', 
+                  color: '#ff7a45', 
+                  fontWeight: 500 
+                }}
+              >
+                More Details
+              </EuiLink>
+            </EuiFlexItem>
+          </EuiFlexGroup>
+        </EuiFlexItem>
+      </EuiFlexGroup>
     </EuiPanel>
   );
 };
