@@ -2,6 +2,7 @@
 
 import { EuiProvider } from '@elastic/eui';
 import './globals.css';
+import { SidebarProvider } from './context/SidebarContext';
 
 export default function RootLayout({
   children,
@@ -12,7 +13,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <EuiProvider colorMode="light">
-          {children}
+          <SidebarProvider>
+            {children}
+          </SidebarProvider>
         </EuiProvider>
       </body>
     </html>
