@@ -10,8 +10,8 @@ import {
   EuiPanel,
   EuiButtonEmpty,
   EuiHorizontalRule,
+  EuiImage,
 } from '@elastic/eui';
-import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useSidebar } from '../../context/SidebarContext';
@@ -62,8 +62,6 @@ export const Sidebar = () => {
         top: 0,
         borderRadius: 0,
         borderRight: '1px solid #D3DAE6',
-        display: 'flex',
-        flexDirection: 'column',
         background: 'linear-gradient(180deg, #E6F3FF 0%, #F0F8FF 50%, #FFFFFF 100%)',
         transition: 'width 0.3s ease',
         zIndex: 1000,
@@ -71,36 +69,37 @@ export const Sidebar = () => {
       onMouseEnter={() => setIsExpanded(true)}
       onMouseLeave={() => setIsExpanded(false)}
     >
-      {/* Logo Section */}
-      <EuiFlexItem grow={false} style={{ padding: isExpanded ? '20px' : '15px 12px', overflow: 'hidden' }}>
-        <EuiFlexGroup alignItems="center" gutterSize="s" responsive={false}>
-          <EuiFlexItem>
-            <EuiFlexGroup 
-              alignItems="center"
-              justifyContent={isExpanded ? 'flexStart' : 'center'}
-              style={{ height: 40 }}
-            >
-              {isExpanded ? (
-                <Image
-                  src="/images/cirrus-logo-bars.png"
-                  alt="CirrusAI Logo"
-                  width={150}
-                  height={40}
-                  style={{ objectFit: 'contain' }}
-                />
-              ) : (
-                <Image
-                  src="/images/cirrus-logo-box.png"
-                  alt="CirrusAI Logo"
-                  width={40}
-                  height={40}
-                  style={{ objectFit: 'contain' }}
-                />
-              )}
-            </EuiFlexGroup>
-          </EuiFlexItem>
-        </EuiFlexGroup>
-      </EuiFlexItem>
+      <EuiFlexGroup direction="column" gutterSize="none" style={{ height: '100%' }}>
+        {/* Logo Section */}
+        <EuiFlexItem grow={false} style={{ padding: isExpanded ? '20px' : '15px 12px', overflow: 'hidden' }}>
+          <EuiFlexGroup alignItems="center" gutterSize="s" responsive={false}>
+            <EuiFlexItem>
+              <EuiFlexGroup 
+                alignItems="center"
+                justifyContent={isExpanded ? 'flexStart' : 'center'}
+                style={{ height: 40 }}
+              >
+                <EuiFlexItem grow={false}>
+                  {isExpanded ? (
+                    <EuiImage
+                      src="/images/cirrus-logo-bars.png"
+                      alt="CirrusAI Logo"
+                      size="l"
+                      style={{ objectFit: 'contain', maxWidth: '150px', maxHeight: '40px' }}
+                    />
+                  ) : (
+                    <EuiImage
+                      src="/images/cirrus-logo-box.png"
+                      alt="CirrusAI Logo"
+                      size="m"
+                      style={{ objectFit: 'contain', maxWidth: '40px', maxHeight: '40px' }}
+                    />
+                  )}
+                </EuiFlexItem>
+              </EuiFlexGroup>
+            </EuiFlexItem>
+          </EuiFlexGroup>
+        </EuiFlexItem>
 
       <EuiHorizontalRule margin="none" />
 
@@ -269,6 +268,7 @@ export const Sidebar = () => {
 
       {/* Spacer to push content up */}
       <EuiFlexItem />
+      </EuiFlexGroup>
     </EuiPanel>
   );
 };
