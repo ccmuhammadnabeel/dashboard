@@ -222,7 +222,7 @@ export const AgentsTable = () => {
 
         .euiBasicTable {
           flex: 1;
-          overflow: auto;
+          overflow: hidden;
         }
 
         .euiPagination {
