@@ -80,7 +80,7 @@ export const CallStatsPanel = () => {
                   letterSpacing: '0.5px' 
                 }}
               >
-                Active Agent
+                Active agents
               </EuiText>
             </EuiFlexItem>
             <EuiFlexItem>
@@ -93,7 +93,7 @@ export const CallStatsPanel = () => {
                   letterSpacing: '0.5px' 
                 }}
               >
-                Satisfaction Score
+                Satisfaction score 
               </EuiText>
             </EuiFlexItem>
             <EuiFlexItem>
@@ -162,7 +162,7 @@ export const CallStatsPanel = () => {
                   fontWeight: 500 
                 }}
               >
-                More Details
+                More details
               </EuiLink>
             </EuiFlexItem>
           </EuiFlexGroup>

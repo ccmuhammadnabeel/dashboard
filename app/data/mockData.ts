@@ -27,6 +27,13 @@ export interface FeedbackData {
   color: string;
 }
 
+export interface Team {
+  id: string;
+  name: string;
+  memberCount?: number;
+  status: 'active' | 'inactive';
+}
+
 export const kpiData: KPIData = {
   numberOfCalls: 13966,
   avgCustomerSatisfaction: 78.92,
@@ -144,4 +151,25 @@ export const callVolumeData = [
   { date: "2023-06-22", calls: 8000 },
   { date: "2023-06-23", calls: 4000 },
   { date: "2023-06-24", calls: 6000 }
+];
+
+export const teamsData: Team[] = [
+  { id: "1", name: "Carecloud Tech Support", status: 'active' },
+  { id: "2", name: "Client Success 1", status: 'active' },
+  { id: "3", name: "Client Success 2", status: 'active' },
+  { id: "4", name: "Crm Talkehr", status: 'active' },
+  { id: "5", name: "Fox Client Services", status: 'active' },
+  { id: "6", name: "Fox Opphy", status: 'active' },
+  { id: "7", name: "Fox Phd", status: 'active' },
+  { id: "8", name: "Fox Poc", status: 'active' },
+  { id: "9", name: "Fox Referral Source", status: 'active' },
+  { id: "10", name: "Fox Welcome", status: 'active' },
+  { id: "11", name: "Frontdesk-Va", status: 'active' },
+  { id: "12", name: "Phd Cch", status: 'active' },
+  { id: "13", name: "Phd Mis", status: 'active' },
+  { id: "14", name: "Phd Orion Rand", status: 'active' },
+  { id: "15", name: "Referral Source Specialist", status: 'active' },
+  { id: "16", name: "Vob Intakes Team", status: 'active' },
+  { id: "17", name: "Vob Team", status: 'active' },
+  { id: "18", name: "Vob-Auth", status: 'active' }
 ];

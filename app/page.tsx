@@ -37,13 +37,13 @@ export default function Home() {
         width: `calc(100% - ${sidebarWidth}px)`, 
         transition: 'margin-left 0.3s ease, width 0.3s ease' 
       }}>
-        <EuiPage 
+        <EuiPage
           paddingSize="m" 
           style={{ 
             backgroundColor: '#f5f7fa',
             minHeight: '100vh'
           }}
-        >
+        >1
           <EuiPageBody style={{ maxWidth: 'none', margin: '0', paddingLeft: '20px', paddingRight: '20px' }}>
             <DashboardHeader />
 

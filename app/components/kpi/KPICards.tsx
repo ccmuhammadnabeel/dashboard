@@ -52,7 +52,7 @@ export const KPICards = () => {
       {/* Number of Calls */}
       <EuiFlexItem>
         <div className={cardStyle}>
-          <div className={iconContainerStyle('#E6F7FF')}>
+          <div className={iconContainerStyle('#dbe6ebff')}>
             <EuiIcon type="phone" size="m" style={{ color: '#1890FF' }} />
           </div>
           <div>
